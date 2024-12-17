@@ -26,26 +26,8 @@ public class RabbitService {
     @Autowired
     DirectConsumer directConsumer;
 
-    // public void init() {
-    //     directConsumer.init("audit", "audit")
-    //             .addProcessor("create_audit_log", this::createAuditLog)
-    //             .start();
-    // }
-
     void createAuditLog(RabbitEvent rabbitEvent){
-        /*PaymentUndefinedEvent paymentUndefinedEvent = PaymentUndefinedEvent.fromJson(rabbitEvent.message.toString());
-        try{
-            paymentMethodService.findAllByUser()
-        } catch (Exception e){
-
-        }*/
+     
     }
 
-    // public void publishPaymentMethod(String exchange, String queue, PublishPaymentMethodDataEvent send){
-    //     RabbitEvent eventToSend = new RabbitEvent();
-    //     eventToSend.type = "payment-method-defined";
-    //     eventToSend.message = send;
-
-    //     directPublisher.publish(exchange, queue, eventToSend);
-    // }
 }

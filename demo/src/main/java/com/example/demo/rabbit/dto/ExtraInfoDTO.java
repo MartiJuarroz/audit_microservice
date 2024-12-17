@@ -1,10 +1,8 @@
 package com.example.demo.rabbit.dto;
 
-import com.example.demo.utils.gson.GsonTools;
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;
 
-import java.util.List;
 @Data
 public final class ExtraInfoDTO {
 

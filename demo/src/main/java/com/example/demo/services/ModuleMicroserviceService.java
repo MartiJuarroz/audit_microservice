@@ -21,8 +21,6 @@ public class ModuleMicroserviceService {
     ModuleMicroserviceRepo moduleMicroserviceRepository;
     @Autowired
     TokenService tokenService;
-    //@Autowired
-    // PaymentMethodValidator paymentMethodValidator;
 
     @Transactional
     public List<ListModuleMicroservice> findAll(){
@@ -33,16 +31,6 @@ public class ModuleMicroserviceService {
                 .active(module.isActive())
                 .build()).collect(Collectors.toList());
     }
-
-    // @Transactional
-    // public List<ListPaymentMethods> findAllByUser(String id){
-    //     List<PaymentMethod> pmus = paymentMethodRepository.findAllByUser(id);
-    //     return pmus.stream().map(pm -> ListPaymentMethods.builder()
-    //             .name(pm.getName())
-    //             .enabled(pm.isEnabled())
-    //             .isDefault(pm.isDefault())
-    //             .build()).collect(Collectors.toList());
-    // }
 
     @Transactional
     public ListModuleMicroservice findById(String id){
@@ -90,50 +78,6 @@ public class ModuleMicroserviceService {
                 .build();
     }
 
-    // @Transactional
-    // public void selectPaymentMethod(String orderId, String paymentMethodId, String token){
-    //     OrderPaymentMethod orderPaymentMethod = orderPaymentMethodRepo.findByOrderId(orderId);
-    //     String idUser = tokenService.getUser(token).id;
-    //     PaymentMethod paymentMethod = paymentMethodRepository.findById(paymentMethodId).orElseThrow(() -> new RecordNotFoundExcepcion("No se encontro el medio de pago."));
-
-    //     List<PaymentMethod> pmsHabilitados = paymentMethodRepository.findAllByUser(idUser);
-    //     if(!pmsHabilitados.contains(paymentMethod)){
-    //         throw new UserUnauthorizedException("El usuario no tiene el medio de pago seleccionado habilitado");
-    //     }
-
-    //     paymentMethodValidator.validateOrderPaymentMethod(orderPaymentMethod);
-
-    //     orderPaymentMethod.setPaymentMethodId(paymentMethodId);
-    //     orderPaymentMethodRepo.save(orderPaymentMethod);
-
-    //     PublishPaymentDefinedData publishPaymentDefinedData = new PublishPaymentDefinedData(orderId, paymentMethodId);
-    //     publishPaymentDefinedData.publishIn(publishPaymentDefined, "order", "order");
-    // }
-
-    // @Transactional
-    // public void enablePaymentMethodUser(String idPaymentMethod, String token, EnableCreditCardDTO dataCard){
-
-    //     String idUser = tokenService.getUser(token).id;
-    //     PaymentMethod paymentMethod = paymentMethodRepository.findById(idPaymentMethod).orElseThrow(() -> new RecordNotFoundExcepcion("No se encontro el medio de pago."));
-
-    //     paymentMethodValidator.validateEnablePaymentMethodUser(paymentMethod);
-
-    //     if(paymentMethodUserRepo.findByUserIdAndPaymentMethodId(idUser, Long.parseLong(idPaymentMethod)).isEmpty()){
-    //         PaymentMethodUser pmu = new PaymentMethodUser();
-    //         pmu.setPaymentMethodId(Long.parseLong(idPaymentMethod));
-    //         pmu.setUserId(idUser);
-    //         paymentMethodUserRepo.save(pmu);
-
-    //         if(Objects.equals(paymentMethod.getName(), "Tarjeta de crédito")){
-    //             DataCreditCard dataCreditCard = new DataCreditCard();
-    //             dataCreditCard.setCardNumber(dataCard.getNumber());
-    //             dataCreditCard.setSecurityCode(dataCard.getSecurityCode());
-    //             dataCreditCard.setUserId(idUser);
-    //             dataCreditCardRepo.save(dataCreditCard);
-    //         }
-    //     }
-    // }
-
     @Transactional
     public ListModuleMicroservice enableModule(String id) {
         ModuleMicroservice module = moduleMicroserviceRepository.findById(id).orElseThrow(() -> new RecordNotFoundExcepcion("El medio de pago no fue encontrado"));
@@ -149,7 +93,6 @@ public class ModuleMicroserviceService {
     @Transactional
     public ListModuleMicroservice deleteModule(String idModule, String token){
 
-        // String idUser = tokenService.getUser(token).id;
         ModuleMicroservice module = moduleMicroserviceRepository.findById(idModule).orElseThrow(() -> new RecordNotFoundExcepcion("El medio de pago no fue encontrado"));
         module.setActive(false);
         moduleMicroserviceRepository.save(module);

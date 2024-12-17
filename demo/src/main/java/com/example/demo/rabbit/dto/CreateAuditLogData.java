@@ -1,6 +1,5 @@
 package com.example.demo.rabbit.dto;
 
-import com.example.demo.services.dto.ListExtraInfoDTO;
 import com.example.demo.utils.gson.GsonTools;
 import com.google.gson.annotations.SerializedName;
 import lombok.Data;

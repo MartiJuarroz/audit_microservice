@@ -17,7 +17,4 @@ public class ExtraInfo {
     @ManyToOne()
     private AuditLog auditLog;
 
-  //  @OneToOne(cascade = CascadeType.ALL)
-  //  private ModuleMicroservice module;
-
 }

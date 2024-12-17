@@ -33,6 +33,4 @@ public class AuditLog {
     @OneToMany(mappedBy = "auditLog")
     private List<ExtraInfo> extraInfo;
 
-    // moduleId: string
-
 }

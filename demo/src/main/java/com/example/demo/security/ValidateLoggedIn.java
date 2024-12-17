@@ -1,6 +1,5 @@
 package com.example.demo.security;
 
-import com.example.demo.utils.errors.UserUnauthorizedException;
 import jakarta.validation.Constraint;
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;

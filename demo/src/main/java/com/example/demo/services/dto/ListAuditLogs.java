@@ -1,13 +1,9 @@
 package com.example.demo.services.dto;
 
-import java.time.LocalDateTime;
 import java.util.HashMap;
-import java.util.List;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Builder;
 import lombok.Data;
-import org.springframework.format.annotation.DateTimeFormat;
 
 @Data
 @Builder

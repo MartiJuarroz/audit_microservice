@@ -13,9 +13,6 @@ import com.example.demo.model.ExtraInfo;
 public interface ExtraInfoRepo extends JpaRepository<ExtraInfo, String> {
 
     @Query(value = "SELECT ex.id, ex.clave, ex.valor, ex.module_id FROM extra_info ex" +
-            // " INNER JOIN module m " +
-            // " ON ex.module_id = m.id" +
-            // " WHERE m.enabled is true AND " +
             " WHERE ex.module_id = :moduleId ", nativeQuery = true)
     List<ExtraInfo> findAllByModule(@Param("moduleId") String moduleId);
 }

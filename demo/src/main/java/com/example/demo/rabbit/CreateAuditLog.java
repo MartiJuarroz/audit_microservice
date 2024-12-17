@@ -3,8 +3,6 @@ package com.example.demo.rabbit;
 import com.example.demo.model.ExtraInfo;
 import com.example.demo.rabbit.dto.ExtraInfoDTO;
 import com.example.demo.repositories.ExtraInfoRepo;
-import com.example.demo.services.dto.ListExtraInfoDTO;
-import com.example.demo.utils.errors.ModuleInvalidError;
 import org.apache.coyote.BadRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,8 +13,6 @@ import com.example.demo.rabbit.dto.CreateAuditLogData;
 import com.example.demo.repositories.AuditLogRepo;
 import com.example.demo.repositories.ModuleMicroserviceRepo;
 import com.example.demo.server.AuditLogger;
-import com.example.demo.server.ValidatorService;
-import com.example.demo.utils.errors.RecordNotFoundExcepcion;
 import com.example.demo.utils.rabbit.DirectConsumer;
 import com.example.demo.utils.rabbit.RabbitEvent;
 
@@ -24,9 +20,6 @@ import java.util.List;
 
 @Service
 public class CreateAuditLog {
-
-    // @Autowired
-    // ValidatorService validatorService;
 
     @Autowired
     AuditLogger auditLogger;
@@ -57,7 +50,6 @@ public class CreateAuditLog {
             if (module == null || !module.isActive() || !module.isAudit()){
                 throw new BadRequestException("Auditoría no disponible para exchange enviado");
             }
-           // createAuditLogEvent.getExtraInfo()
             log.setModuleId(module.getId());
             log.setAction(createAuditLogEvent.getAction());
             log.setActionTo(createAuditLogEvent.getActionTo());
